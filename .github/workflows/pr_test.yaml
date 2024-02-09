@@ -13,4 +13,4 @@ jobs:
           echo "Source Repository Name: ${{ github.event.pull_request.head.repo.name  }}"
       - name: Print Target Repo Name
         run: |
-          echo "Target Repository Name: ${{ github.event.pull_request.base.repo.name }}"
+          echo "Target Repository Name: ${{ github.event.pull_request.base.repo.owner.login }}"
