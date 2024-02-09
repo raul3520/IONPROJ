@@ -1,17 +1,18 @@
 name: Print Repo Names
-
 on:
   pull_request:
-    types: [opened, synchronize]
+    # types: [opened, synchronize]
 
 jobs:
   print_repo_names:
+    if: |
+      (contains(github.event.pull_request.labels.*.name, 'bypass-fail'))
     runs-on: ubuntu-latest
 
     steps:
       - name: Print Source Repo Name
         run: |
-          echo "Source Repository Name: ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "Source Repository Name: ${{ github.event.pull_request.head.repo.name  }}"
       - name: Print Target Repo Name
         run: |
-          echo "Target Repository Name: ${{ github.event.pull_request.base.repo.full_name }}"
+          echo "Target Repository Name: ${{ github.event.pull_request.base.repo.owner.login }}"
