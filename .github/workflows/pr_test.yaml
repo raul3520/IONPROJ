@@ -6,7 +6,7 @@ on:
 jobs:
   print_repo_names:
     if: |
-      (contains(github.event.pull_request.labels.*.name, 'bypass-fail') 
+      contains(github.event.pull_request.labels.*.name, 'bypass-fail') 
     runs-on: ubuntu-latest
 
     steps:
