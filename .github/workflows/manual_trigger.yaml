@@ -9,6 +9,7 @@ on:
 
 jobs:
   build:
+  if: contains(github.event.pull_request.labels.*.name, 'example-label')
     runs-on: ubuntu-latest
 
     steps:
