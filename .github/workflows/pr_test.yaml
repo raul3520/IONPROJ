@@ -1,7 +1,7 @@
 name: Print Repo Names
 on:
   pull_request:
-    types: [opened, synchronize]
+    # types: [opened, synchronize]
 
 jobs:
   print_repo_names:
