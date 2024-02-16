@@ -3,11 +3,16 @@ name: merge_to_develop_sleep
 on:
   push:
     branches: [ master ]
-concurrency:
-  group: merge_to_develop_sleep || test_conc
+
+
+
+  
+
 jobs:
   build_executable_middle_layer:
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy_to_develop 
     steps:
       - name: Authenticate to Docker registry
         shell: bash
