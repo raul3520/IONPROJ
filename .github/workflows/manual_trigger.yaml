@@ -6,7 +6,6 @@ on:
       branch:
         description: 'Branch name to build'
         required: true
-
 jobs:
   build:
 
