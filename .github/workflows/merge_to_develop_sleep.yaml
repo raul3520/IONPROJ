@@ -4,7 +4,7 @@ on:
   push:
     branches: [ master ]
 concurrency:
-  group: merge_to_develop_sleep
+  group: merge_to_develop_sleep || test_conc
 jobs:
   build_executable_middle_layer:
     runs-on: ubuntu-latest
@@ -13,4 +13,4 @@ jobs:
         shell: bash
         run: |
           echo "sleep 150"
-          sleep 150
+          sleep 300
