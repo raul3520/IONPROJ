@@ -2,13 +2,7 @@ name: Merge_to_master
 
 on:
   push:
-    branches: [ master ]
-    
-concurrency:
-  group: merge_to_develop_sleep
-  cancel-in-progress: ${{ !contains(concurrency.group, 'deploy_to_develop') }}
-  
-  
+    branches: [ master ]  
 jobs:
   build_executable_middle_layer:
     runs-on: ubuntu-latest
