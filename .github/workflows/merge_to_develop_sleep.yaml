@@ -1,0 +1,15 @@
+name: merge_to_develop_sleep
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build_executable_middle_layer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Authenticate to Docker registry
+        shell: bash
+        run: |
+          echo "sleep 150"
+          sleep 150
