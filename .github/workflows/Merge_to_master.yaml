@@ -6,7 +6,8 @@ on:
     
 concurrency:
   group: merge_to_develop_sleep
-  cancel-in-progress: ${{ !contains('test_case_true', concurrency.group) }}
+  cancel-in-progress: ${{ !contains(concurrency.group, 'deploy_to_develop') }}
+  
   
 jobs:
   build_executable_middle_layer:
