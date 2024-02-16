@@ -6,6 +6,8 @@ on:
 jobs:
   build_executable_middle_layer:
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy_to_develop 
     steps:
       - name: Authenticate to Docker registry
         shell: bash
