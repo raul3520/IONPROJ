@@ -4,18 +4,26 @@ on:
   push:
     branches: [ master ]
 
-
-
-  
-
 jobs:
-  build_executable_middle_layer:
+  test-mysql-connection:
     runs-on: ubuntu-latest
-    concurrency:
-      group: deploy_to_develop 
+    services:
+      mysql:
+        image: mysql:latest
+        env:
+          MYSQL_ROOT_PASSWORD: my-secret-pw
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
-      - name: Authenticate to Docker registry
-        shell: bash
-        run: |
-          echo "sleep 150"
-          sleep 300
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Test MySQL connection
+      run: |
+        mysql -h 127.0.0.1 -P 3306 -u root -p my-secret-pw -e "show databases"
