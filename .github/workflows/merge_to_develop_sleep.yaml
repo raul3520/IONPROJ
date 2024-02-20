@@ -1,8 +1,8 @@
-name: merge_to_develop_sleep
+name: test-mysql-connection
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   test-mysql-connection:
@@ -25,5 +25,7 @@ jobs:
         python-version: '3.x'
 
     - name: Test MySQL connection
+      env:
+        MYSQL_PWD: my-secret-pw
       run: |
-        mysql -h 127.0.0.1 -P 3306 -u root -p my-secret-pw -e "show databases"
+        mysql -h 127.0.0.1 -P 3306 -u root -e "show databases"
